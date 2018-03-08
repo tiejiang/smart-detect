@@ -115,7 +115,7 @@ public class ResultActivity extends Activity {
         final VoiceWakeuper mIvw = VoiceWakeuper.createWakeuper(context, null);
         mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mWifiAutoConnectManager = new WifiAutoConnectManager(mWifiManager);
-        mWifiAutoConnectManager.connect("YINGYUKJ", "lele924**--1688", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_WPA);
+//        mWifiAutoConnectManager.connect("a.intchip:56:7B", "", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_NOPASS);
 
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
         soundPool.load(context, R.raw.takepic, 1);

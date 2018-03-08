@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cameraLib/app.iml" filepath="$PROJECT_DIR$/cameraLib/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wifi_camera.iml" filepath="$PROJECT_DIR$/wifi_camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cameraLib/cameraLib.iml" filepath="$PROJECT_DIR$/cameraLib/cameraLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smart-detect.iml" filepath="$PROJECT_DIR$/smart-detect.iml" />
     </modules>
   </component>
 </project>
