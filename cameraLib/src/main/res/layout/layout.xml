@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF">
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         >
+
+
+          <com.intchip.media.StreamMadiaPlayer
+              android:id="@+id/main_surface"
+              android:layout_width="400dp"
+              android:layout_height="365dp"
+              android:layout_gravity="center"
+              android:layout_centerHorizontal="true"
+              android:layout_centerInParent="true"
+              android:background="#00000000"/>
+
+          <!--<ImageView-->
+              <!--android:layout_width="30dp"-->
+              <!--android:layout_height="30dp"-->
+              <!--android:src="@drawable/aim_at"-->
+              <!--android:layout_marginTop="265dp"-->
+              <!--android:layout_centerHorizontal="true"-->
+              <!--/>-->
+          <!--<TextView-->
+              <!--android:id="@+id/laser_measure_dis"-->
+              <!--android:layout_width="wrap_content"-->
+              <!--android:layout_height="wrap_content"-->
+              <!--android:layout_alignBottom="@+id/main_surface"-->
+              <!--android:layout_centerHorizontal="true"-->
+              <!--android:layout_marginBottom="72dp"-->
+              <!--android:text="" />-->
+     </RelativeLayout>
+
+</FrameLayout>

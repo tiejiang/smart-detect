@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/clientServersText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:layout_marginTop="10dip"></TextView>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/facedetect"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.22"
+            android:text="人脸检测"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="33dp"
+            android:layout_above="@+id/textrec"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/scenerec"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_weight="0.22"
+            android:text="场景识别"
+            android:layout_alignBaseline="@+id/facedetect"
+            android:layout_alignBottom="@+id/facedetect"
+            android:layout_toEndOf="@+id/facedetect" />
+
+        <Button
+            android:id="@+id/textrec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.22"
+            android:text="文字识别"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/facedetect"
+            android:layout_alignEnd="@+id/facedetect" />
+
+        <Button
+            android:id="@+id/stoptts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.22"
+            android:text="停止语音"
+            android:layout_alignBaseline="@+id/textrec"
+            android:layout_alignBottom="@+id/textrec"
+            android:layout_alignStart="@+id/scenerec"
+            android:layout_alignEnd="@+id/scenerec" />
+    </RelativeLayout>
+</LinearLayout>
