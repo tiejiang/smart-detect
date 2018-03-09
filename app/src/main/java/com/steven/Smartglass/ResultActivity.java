@@ -125,7 +125,7 @@ public class ResultActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SDLNative.snapshot(ResultActivity.initPath()+"snapshot_pic.jpg");
+                SDLNative.snapshot(ResultActivity.initPath()+"temp.jpeg");
 //                Intent BTintent = new Intent(ResultActivity.this, ClientActivity.class);
 //                startActivity(BTintent);
             }
@@ -203,18 +203,19 @@ public class ResultActivity extends Activity {
         takepic.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   newCamera = (com.steven.Smartglass.newCamera) findViewById(R.id.newCamera);
-                   newCamera.setVisibility(View.VISIBLE);
-                   tv.setVisibility(View.INVISIBLE);
-                   turingtv.setVisibility(View.INVISIBLE);
+                   SDLNative.snapshot(storagePath+"temp.jpeg");
+//                   newCamera = (com.steven.Smartglass.newCamera) findViewById(R.id.newCamera);
+//                   newCamera.setVisibility(View.VISIBLE);
+//                   tv.setVisibility(View.INVISIBLE);
+//                   turingtv.setVisibility(View.INVISIBLE);
+//                   new Handler().postDelayed(new Runnable() {
+//                       public void run() {
+//                           newCamera.takePicture();
+//                       }
+//                   }, 1000);
                    new Handler().postDelayed(new Runnable() {
                        public void run() {
-                           newCamera.takePicture();
-                       }
-                   }, 1000);
-                   new Handler().postDelayed(new Runnable() {
-                       public void run() {
-                           newCamera.setVisibility(View.INVISIBLE);
+//                           newCamera.setVisibility(View.INVISIBLE);
                            File tempFile = new File("/sdcard/temp.jpeg");
                            String path = tempFile.getAbsolutePath();
                            Bitmap bitmap = BitmapFactory.decodeFile(path);
@@ -318,8 +319,18 @@ public class ResultActivity extends Activity {
              {
                  @Override
                  public void onClick(View v) {
-                     takepic.performClick();
+
+                     //test code begin
+//                     takepic.performClick();
+                     File file = new File(Environment.getExternalStorageDirectory(), "temp.jpeg");
+                     FaceDetect faceDetect = new FaceDetect(file, "https://api-cn.faceplusplus.com/facepp/v3/search", handler);
+                     faceDetect.start();
+                     Toast.makeText(context, "正在识别，请稍等...", Toast.LENGTH_SHORT).show();
+
+                     SpeechSynthesizer mTts = SpeechSynthesizer.createSynthesizer(context, null);
+                     new Xunfei_TTS(context, mTts, "正在识别，请稍等", handler, mWakeuperListener);
 //                     new Xunfei_TTS(context, mTts, "我在,请说", handler, mWakeuperListener);
+                     //test code end
                  }
              }
         );
@@ -398,7 +409,7 @@ public class ResultActivity extends Activity {
 
     public static String initPath(){
         if(storagePath.equals("")){
-            storagePath = parentPath.getAbsolutePath()+"/" + DST_FOLDER_NAME;
+            storagePath = parentPath.getAbsolutePath()+"/";
             File f = new File(storagePath);
             if(!f.exists()){
                 f.mkdir();
@@ -429,9 +440,10 @@ public class ResultActivity extends Activity {
                             Log.d("TIEJIANG", "ResultActivity---WakeuperListener"+" wake up");
                             takepic.performClick(); //代码主动调用按键的点击事件（的方法）
                             //断开wifi/获得图像-->保持4G网络正常-->
-//                            if (mWifiManager.isWifiEnabled()) {
-//                                mWifiManager.setWifiEnabled(false);
-//                            } else {
+                            if (mWifiManager.isWifiEnabled()) {
+                                mWifiManager.setWifiEnabled(false);
+                            }
+//                             else {
 //                                mWifiManager.setWifiEnabled(true);
 //                            }
 

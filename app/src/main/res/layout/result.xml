@@ -32,7 +32,7 @@
                 android:layout_above="@+id/textView"
                 android:layout_toLeftOf="@+id/main_surface"
                 android:layout_toStartOf="@+id/main_surface"
-                android:text="语音"
+                android:text="face++"
                 android:visibility="visible" />
 
 
