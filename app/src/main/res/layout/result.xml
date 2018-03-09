@@ -98,10 +98,10 @@
                 android:layout_below="@+id/facepic"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_take_pic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="控制端"
+                android:text="拍照"
                 android:layout_below="@+id/detect"/>
 
             <!--<Button-->

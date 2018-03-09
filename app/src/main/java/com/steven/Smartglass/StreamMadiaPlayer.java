@@ -358,7 +358,7 @@ public class StreamMadiaPlayer extends SurfaceView implements SurfaceHolder.Call
 		mIsSurfaceReady = true;
 		SDLNative.onNativeSurfaceChanged();
 
-		SDLNative.snapshot(ResultActivity.initPath()+"snapshot_pic.jpg");
+
 
 		if (mSDLThread == null) {
 			mSDLThread = new Thread(new SDLMain(), "SDLThread");

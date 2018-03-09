@@ -35,7 +35,7 @@ import com.iflytek.cloud.VoiceWakeuper;
 import com.iflytek.cloud.WakeuperListener;
 import com.iflytek.cloud.WakeuperResult;
 import com.iflytek.cloud.util.ResourceUtil;
-import com.steven.Smartglass.BT.ClientActivity;
+import com.intchip.media.SDLNative;
 import com.steven.Smartglass.BT.bluetoothUtil.BluetoothTools;
 import com.steven.Smartglass.BT.bluetoothUtil.TransmitBean;
 import com.steven.Smartglass.Baidutranslate.TransApi;
@@ -121,12 +121,13 @@ public class ResultActivity extends Activity {
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
         soundPool.load(context, R.raw.takepic, 1);
         imageView = (ImageView) findViewById(R.id.pic);
-        button = (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.btn_take_pic);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent BTintent = new Intent(ResultActivity.this, ClientActivity.class);
-                startActivity(BTintent);
+                SDLNative.snapshot(ResultActivity.initPath()+"snapshot_pic.jpg");
+//                Intent BTintent = new Intent(ResultActivity.this, ClientActivity.class);
+//                startActivity(BTintent);
             }
         });
 
