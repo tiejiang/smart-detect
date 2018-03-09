@@ -23,16 +23,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
             <Button
                 android:id="@+id/voice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="16dp"
+                android:layout_above="@+id/textView"
+                android:layout_toLeftOf="@+id/main_surface"
+                android:layout_toStartOf="@+id/main_surface"
                 android:text="语音"
                 android:visibility="visible" />
 
@@ -50,7 +49,6 @@
                 android:id="@+id/pic"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/comm"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
@@ -60,8 +58,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="22dp"
-                android:layout_toStartOf="@+id/voice"
                 android:text="拍照"
                 android:visibility="invisible" />
 
@@ -69,10 +65,11 @@
                 android:id="@+id/facepic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/textView"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/pic"
+                android:layout_alignParentRight="true"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginRight="16dp"
                 android:text="增加属性" />
 
             <TextView
@@ -80,7 +77,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
                 android:scrollbars="vertical"
                 android:text=""
                 android:textSize="20dp" />
@@ -90,7 +86,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_above="@+id/turing"
-                android:layout_alignParentStart="true"
                 android:scrollbars="vertical"
                 android:text=""
                 android:textSize="20dp" />
@@ -100,32 +95,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="detect"
-                android:layout_below="@+id/facepic"
-                android:layout_alignStart="@+id/facepic" />
+                android:layout_below="@+id/facepic"/>
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="控制端"
-                android:layout_below="@+id/detect"
-                android:layout_alignStart="@+id/detect" />
+                android:layout_below="@+id/detect"/>
 
-            <Button
-                android:id="@+id/bluetoothstart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="开启蓝牙"
-                android:layout_below="@+id/button"
-                android:layout_alignStart="@+id/button" />
+            <!--<Button-->
+                <!--android:id="@+id/bluetoothstart"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="开启蓝牙"-->
+                <!--android:layout_below="@+id/button"-->
+                <!--android:layout_alignStart="@+id/button" />-->
 
-            <Button
-                android:id="@+id/bluetoothstop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/bluetoothstart"
-                android:layout_below="@+id/bluetoothstart"
-                android:text="关闭蓝牙" />
+            <!--<Button-->
+                <!--android:id="@+id/bluetoothstop"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignEnd="@+id/bluetoothstart"-->
+                <!--android:layout_below="@+id/bluetoothstart"-->
+                <!--android:text="关闭蓝牙" />-->
 
             <com.steven.Smartglass.StreamMadiaPlayer
                 android:id="@+id/main_surface"

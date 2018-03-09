@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
@@ -37,7 +36,6 @@ import com.iflytek.cloud.WakeuperListener;
 import com.iflytek.cloud.WakeuperResult;
 import com.iflytek.cloud.util.ResourceUtil;
 import com.steven.Smartglass.BT.ClientActivity;
-import com.steven.Smartglass.BT.bluetoothUtil.BluetoothServerService;
 import com.steven.Smartglass.BT.bluetoothUtil.BluetoothTools;
 import com.steven.Smartglass.BT.bluetoothUtil.TransmitBean;
 import com.steven.Smartglass.Baidutranslate.TransApi;
@@ -98,6 +96,9 @@ public class ResultActivity extends Activity {
     public StreamMadiaPlayer mStreamMadiaPlayer;
     public SurfaceView mVideoSurfaceView;
     public static ResultActivity mResActivityInstance;
+    private static final File parentPath = Environment.getExternalStorageDirectory();
+    private static   String storagePath = "";
+    private static final String DST_FOLDER_NAME = "CameraPic";
 
 
     @Override
@@ -108,7 +109,7 @@ public class ResultActivity extends Activity {
         mResActivityInstance = this;
 //        mStreamMadiaPlayer = (StreamMadiaPlayer)findViewById(com.intchip.media.R.id.main_surface);
         mStreamMadiaPlayer = (StreamMadiaPlayer)findViewById(com.steven.Smartglass.R.id.main_surface);
-
+        initPath();
         //初始化讯飞语音
         SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5a256161");
         final SpeechSynthesizer mTts = SpeechSynthesizer.createSynthesizer(context, null);
@@ -129,33 +130,33 @@ public class ResultActivity extends Activity {
             }
         });
 
-        bluetoothstart = (Button) findViewById(R.id.bluetoothstart);
-        bluetoothstart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //开启后台service
-                Intent startService = new Intent(ResultActivity.this, BluetoothServerService.class);
-                startService(startService);
-                //注册BoradcastReceiver
-                IntentFilter intentFilter = new IntentFilter();
-                intentFilter.addAction(BluetoothTools.ACTION_DATA_TO_GAME);
-                intentFilter.addAction(BluetoothTools.ACTION_CONNECT_SUCCESS);
-                registerReceiver(broadcastReceiver, intentFilter);
-                tv.setText("正在连接...");
-            }
-        });
-
-        bluetoothstop = (Button) findViewById(R.id.bluetoothstop);
-        bluetoothstop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //关闭后台Service
-                Intent startService = new Intent(BluetoothTools.ACTION_STOP_SERVICE);
-                sendBroadcast(startService);
-                unregisterReceiver(broadcastReceiver);
-                tv.setText("蓝牙已关闭");
-            }
-        });
+//        bluetoothstart = (Button) findViewById(R.id.bluetoothstart);
+//        bluetoothstart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //开启后台service
+//                Intent startService = new Intent(ResultActivity.this, BluetoothServerService.class);
+//                startService(startService);
+//                //注册BoradcastReceiver
+//                IntentFilter intentFilter = new IntentFilter();
+//                intentFilter.addAction(BluetoothTools.ACTION_DATA_TO_GAME);
+//                intentFilter.addAction(BluetoothTools.ACTION_CONNECT_SUCCESS);
+//                registerReceiver(broadcastReceiver, intentFilter);
+//                tv.setText("正在连接...");
+//            }
+//        });
+//
+//        bluetoothstop = (Button) findViewById(R.id.bluetoothstop);
+//        bluetoothstop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //关闭后台Service
+//                Intent startService = new Intent(BluetoothTools.ACTION_STOP_SERVICE);
+//                sendBroadcast(startService);
+//                unregisterReceiver(broadcastReceiver);
+//                tv.setText("蓝牙已关闭");
+//            }
+//        });
 
         detect = (Button) findViewById(R.id.detect);
         detect.setOnClickListener(new View.OnClickListener() {
@@ -316,7 +317,8 @@ public class ResultActivity extends Activity {
              {
                  @Override
                  public void onClick(View v) {
-                     new Xunfei_TTS(context, mTts, "我在,请说", handler, mWakeuperListener);
+                     takepic.performClick();
+//                     new Xunfei_TTS(context, mTts, "我在,请说", handler, mWakeuperListener);
                  }
              }
         );
@@ -391,6 +393,17 @@ public class ResultActivity extends Activity {
             default:
                 break;
         }
+    }
+
+    public static String initPath(){
+        if(storagePath.equals("")){
+            storagePath = parentPath.getAbsolutePath()+"/" + DST_FOLDER_NAME;
+            File f = new File(storagePath);
+            if(!f.exists()){
+                f.mkdir();
+            }
+        }
+        return storagePath;
     }
 
     //听写监听器
