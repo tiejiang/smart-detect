@@ -81,7 +81,7 @@ public class WifiAutoConnectManager {
             config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
             // 此处需要修改否则不能自动重联
-             config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+//             config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
             config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
             config.status = WifiConfiguration.Status.ENABLED;
