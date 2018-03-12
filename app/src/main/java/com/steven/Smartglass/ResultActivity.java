@@ -117,9 +117,9 @@ public class ResultActivity extends Activity {
         mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mWifiAutoConnectManager = new WifiAutoConnectManager(mWifiManager);
 //        mWifiAutoConnectManager.connect("a.intchip:56:7B", "", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_NOPASS);
-        mWifiAutoConnectManager.connect("FD-85", "", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_NOPASS);
+//        mWifiAutoConnectManager.connect("FD-85", "", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_NOPASS);
 //        mWifiAutoConnectManager.connect("YINGYUKJ", "lele924**--1688", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_WPA);
-
+        connectWifi();
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
         soundPool.load(context, R.raw.takepic, 1);
         imageView = (ImageView) findViewById(R.id.pic);
@@ -231,7 +231,6 @@ public class ResultActivity extends Activity {
                    }, 2000);
                }
            }
-
         );
 
 
@@ -262,6 +261,8 @@ public class ResultActivity extends Activity {
                                 case FaceppMSGwhat:
                                     tv.setText(TTSmsg);
                                     new Xunfei_TTS(context, mTts, TTSmsg, handler, mWakeuperListener);
+                                    //收到服务器的返回之后，重新打开wifi对第二次的识别做准备
+                                    connectWifi();
                                     break;
                                 case UploadMSGwhat:
                                     tv.setText(TTSmsg);
@@ -407,6 +408,10 @@ public class ResultActivity extends Activity {
             default:
                 break;
         }
+    }
+
+    private void connectWifi(){
+        mWifiAutoConnectManager.connect("FD-85", "", WifiAutoConnectManager.WifiCipherType.WIFICIPHER_NOPASS);
     }
 
     public static String initPath(){
