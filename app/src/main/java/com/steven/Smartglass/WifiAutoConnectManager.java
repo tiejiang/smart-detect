@@ -54,9 +54,9 @@ public class WifiAutoConnectManager {
         config.SSID = "\"" + SSID + "\"";
         // nopass
         if (Type == WifiCipherType.WIFICIPHER_NOPASS) {
-            config.wepKeys[0] = "";
+//            config.wepKeys[0] = "";
             config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-            config.wepTxKeyIndex = 0;
+//            config.wepTxKeyIndex = 0;
         }
         // wep
         if (Type == WifiCipherType.WIFICIPHER_WEP) {
